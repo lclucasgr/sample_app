@@ -1,0 +1,23 @@
+D, [2018-04-17T22:50:48.760165 #22426] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+D, [2018-04-17T22:50:48.807067 #22426] DEBUG -- :   [1m[35m (46.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+D, [2018-04-17T22:50:48.820632 #22426] DEBUG -- :   [1m[35m (11.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2018-04-17T22:50:48.830084 #22426] DEBUG -- :   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+I, [2018-04-17T22:50:48.830180 #22426]  INFO -- : Migrating to CreateUsers (20180412132616)
+D, [2018-04-17T22:50:48.848912 #22426] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2018-04-17T22:50:48.850984 #22426] DEBUG -- :   [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "users" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "email" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+D, [2018-04-17T22:50:48.853578 #22426] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180412132616"]]
+D, [2018-04-17T22:50:48.867988 #22426] DEBUG -- :   [1m[35m (14.1ms)[0m  [1m[36mcommit transaction[0m
+I, [2018-04-17T22:50:48.868112 #22426]  INFO -- : Migrating to AddIndexToUsersEmail (20180414010929)
+D, [2018-04-17T22:50:48.879640 #22426] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2018-04-17T22:50:48.881635 #22426] DEBUG -- :   [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+D, [2018-04-17T22:50:48.883247 #22426] DEBUG -- :   [1m[35mSQL (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180414010929"]]
+D, [2018-04-17T22:50:48.889826 #22426] DEBUG -- :   [1m[35m (6.2ms)[0m  [1m[36mcommit transaction[0m
+I, [2018-04-17T22:50:48.890027 #22426]  INFO -- : Migrating to AddPasswordDigestToUsers (20180414051607)
+D, [2018-04-17T22:50:48.905085 #22426] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2018-04-17T22:50:48.906631 #22426] DEBUG -- :   [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "users" ADD "password_digest" varchar[0m
+D, [2018-04-17T22:50:48.910895 #22426] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20180414051607"]]
+D, [2018-04-17T22:50:48.916330 #22426] DEBUG -- :   [1m[35m (5.1ms)[0m  [1m[36mcommit transaction[0m
+D, [2018-04-17T22:50:48.918247 #22426] DEBUG -- :   [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+D, [2018-04-17T22:50:48.933382 #22426] DEBUG -- :   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+D, [2018-04-17T22:50:48.943575 #22426] DEBUG -- :   [1m[35mSQL (9.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "production"], ["created_at", "2018-04-18 01:50:48.933623"], ["updated_at", "2018-04-18 01:50:48.933623"]]
+D, [2018-04-17T22:50:48.947028 #22426] DEBUG -- :   [1m[35m (3.2ms)[0m  [1m[36mcommit transaction[0m
